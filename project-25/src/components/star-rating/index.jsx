@@ -3,25 +3,35 @@ import './styles.css'
 import { useState } from 'react';
 
 export function StarRating({noOfStars}){
-    noOfStars = 5;
     const[rating,setRating] = useState(null);
     const[hover,setHover] = useState(null);
 
     function handleClick(getCurrentIndex){
         console.log(getCurrentIndex);
     }
+    function handleMouseEnter(getCurrentIndex){
+        console.log("Entered",getCurrentIndex);
+    }
+    function handleMouseLeave(getCurrentIndex){
+        console.log("Left",getCurrentIndex);
+    }
     return(
-        <div>
-            {[...Array(noOfStars)].map((_,index)=>{
-                return(
-                    <FaStar className='stars'
-                    key={index}
-                    onClick={()=>handleClick(index)}
-                    />
-                );
+        <div className='star-wrapper'>
+            <div className='stars'>
+                {[...Array(noOfStars)].map((_,index)=>{
+                    index +=1 ;
+                    return(
+                            <FaStar className='star'
+                            key={index}
+                            onClick={()=>handleClick(index)}
+                            onMouseMove={()=>handleMouseEnter(index)}
+                            onMouseLeave={()=>handleMouseLeave(index)}
+                            />
+                    );
+                    
+                })}
                 
-            })}
-            
+            </div>
         </div>
     );
 }

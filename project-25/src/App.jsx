@@ -9,7 +9,7 @@ function App() {
     <>
       <Accordian />
       <RandomColor />
-      <StarRating />
+      <StarRating noOfStars={10}/>
     </>
   )
 }
